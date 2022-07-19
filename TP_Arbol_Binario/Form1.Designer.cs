@@ -42,6 +42,7 @@ namespace TP_Arbol_Binario
             this.btnMenor = new System.Windows.Forms.Button();
             this.btnSuma = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -197,6 +198,7 @@ namespace TP_Arbol_Binario
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.CadetBlue;
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.BtnInsertar);
             this.panel2.Controls.Add(this.BtnBuscar);
             this.panel2.Controls.Add(this.btnEliminar);
@@ -205,6 +207,16 @@ namespace TP_Arbol_Binario
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(763, 94);
             this.panel2.TabIndex = 118;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(634, 32);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // BtnInsertar
             // 
@@ -364,7 +376,10 @@ namespace TP_Arbol_Binario
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Click += new System.EventHandler(this.Form1_Click);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -405,6 +420,7 @@ namespace TP_Arbol_Binario
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

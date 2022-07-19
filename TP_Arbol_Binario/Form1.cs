@@ -20,11 +20,15 @@ namespace TP_Arbol_Binario
             btnMultiplo3.Visible = false;
             btnMultiplo5.Visible = false;
             panel3.Visible = false;
+            a();
         }
 
         int Dato = 0;
-
-        Graphics c;
+        Boolean  rrr =false;
+        public Graphics c;
+        public Graphics[] af = new Graphics[10];
+        bool aaa= false;
+        int ccc = 0;
         Arbol_ABB Arbol = new Arbol_ABB();
 
         private void btnAltura_Click(object sender, EventArgs e)
@@ -55,10 +59,13 @@ namespace TP_Arbol_Binario
 
                 Refresh();
                // Refresh();
-                Arbol.Recorrido();
+               // Arbol.Recorrido();
                 txtPosOrden.Text = Arbol.posorden;
                 txtInOrden.Text = Arbol.inorden;
                 txtPreOrden.Text = Arbol.preorden;
+                aaa = true;
+                MessageBox.Show("nelson"+c);
+                //  Arbol.PArbol(c, this.Font, Brushes.Black, Brushes.White, Pens.Black, Brushes.White);
             }
             else
             {
@@ -210,10 +217,79 @@ namespace TP_Arbol_Binario
 
         }
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
+        //Font ca;
+
+        private void Form1_Click(object sender, PaintEventArgs e)
         {
             c = e.Graphics;
+            af[ccc] = e.Graphics;
+           /// ca = this.Font;
+          // MessageBox.Show("ho" + c.ToString());
             Arbol.Arbol(c, this.Font, Brushes.CadetBlue, Brushes.White, Pens.Black, Brushes.White);
+
+            if (aaa == true)
+            {
+                MessageBox.Show("Nelsona");
+                //Arbol.Arbol(c, this.Font, Brushes.Black, Brushes.White, Pens.Black, Brushes.White);
+                Arbol.colorear(c,this.Font, Brushes.Black, Brushes.White, Pens.Black, Arbol.raiz, aaa);
+
+            }
+        }
+
+        /*  private void Form1_Load(object sender, EventArgs e)
+          {
+              c = e.Graphics;
+               MessageBox.Show("hola" + c.ToString());
+          }*/
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("nelson");
+        }
+
+        public void Form1_Load(object sender, PaintEventArgs e)
+        {
+            c = e.Graphics;
+            af[ccc] = c;
+            ccc++;
+          //  MessageBox.Show("hola" +c);
+            Arbol.Arbol(c, this.Font, Brushes.CadetBlue, Brushes.White, Pens.Black, Brushes.White);
+            if (aaa == true)
+            {
+                MessageBox.Show("Nelsona");
+                //Arbol.Arbol(c, this.Font, Brushes.Black, Brushes.White, Pens.Black, Brushes.White);
+                Arbol.colorear(c, this.Font, Brushes.Black, Brushes.White, Pens.Black, Arbol.raiz, aaa);
+
+            }
+
+
+        }
+
+
+        PaintEventArgs ac;
+        private void a()
+        {
+            PaintEventArgs ac;
+          //  c = ac.Graphics;
+            MessageBox.Show("hol" + c);
+        }
+
+        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+          //  MessageBox.Show("hola" + e);
+            //Form1_Load(sender, e);
+            // Arbol.PArbol(, this.Font, Brushes.CadetBlue, Brushes.White, Pens.Black, Brushes.White);
         }
     }
 }

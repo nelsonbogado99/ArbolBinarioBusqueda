@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Drawing;
 
 namespace TP_Arbol_Binario
 {
@@ -17,13 +20,14 @@ namespace TP_Arbol_Binario
             raiz = null;
 
         }
-
+        // c = e.Graphics;
+         Graphics cac;
         public string inorden = ""; // variale de tipo string para guardar en ella el recorrido el arbol en in orden
         public string posorden = ""; // variale de tipo string para guardar en ella el recorrido el arbol en pos orden
         public string preorden = ""; // variale de tipo string para guardar en ella el recorrido el arbol en pre orden
 
         public int auxiliar = 1, contador = 0, ay = 0; // variables auxiliares que se usa para recorrer los diferentes arreglos
-        int[] Altura = new int[500]; // este arreglo se usara para guardar en ella las alturas del arbol
+        int[] Altura = new int[800]; // este arreglo se usara para guardar en ella las alturas del arbol
         int[] Infor = new int[200]; // este arreglo se usa para guardar en ella los diferentes datos ingresados para el nodo
         int[] MayorMenor = new int[200]; // en este se guarda los valores de los nodos para saber que nodo es menor o mayor
 
@@ -219,20 +223,25 @@ namespace TP_Arbol_Binario
 
 
         // llamado por el boton Recorridos
-        public void Recorrido()
+        public void Recorrido(Graphics grafo)
         {
+            Form1 ac = new Form1();
             if (raiz != null)
             {
-                RecorridoPreOrden(raiz);// llama a los diferentes metodos de recorrido
-                RecorridoIndOrden(raiz);
-                RecorridoPosOrden(raiz);
+
+                colorear(grafo, ac.Font, Brushes.CadetBlue, Brushes.White, Pens.Black, raiz, true);
+
+                // RecorridoPreOrden(raiz,grafo);// llama a los diferentes metodos de recorrido
+                //  RecorridoIndOrden(raiz);
+                // RecorridoPosOrden(raiz);
+                //  MessageBox.Show("reco" + this.Font);
             }
             else // en caso de que el arbol este vacio
             {
                 MessageBox.Show("El arbol esta vacio.");
             }
         }
-
+        
 
         // Metpdo que recive la informacion a ser buscada en el arbol
         public void BuscarNodo(int info)
@@ -597,15 +606,20 @@ namespace TP_Arbol_Binario
 
         }
 
-
         //Metodo de recorrido en pre orden
-        public void RecorridoPreOrden(nodoArbol raiz)
+       // public string a;
+        public void RecorridoPreOrden(nodoArbol raiz, Graphics grafo)
         {
+           
             if (raiz != null)
             {
+                Form1 ac = new Form1();
                 preorden += raiz.Info.ToString() + ", ";
-                RecorridoPreOrden(raiz.Izq);
-                RecorridoPreOrden(raiz.Der);
+                PArbol(grafo,ac.Font, Brushes.Black, Brushes.White, Pens.Black, Brushes.White, raiz.Info.ToString());
+              
+                Thread.Sleep(600);
+              //  RecorridoPreOrden(raiz.Izq);
+               // RecorridoPreOrden(raiz.Der);
 
             }
         }
@@ -650,11 +664,50 @@ namespace TP_Arbol_Binario
                 return;
             }
 
-            raiz.PosicionNodo(ref x, y); // posicion de todos los nodoS
-            raiz.Ramas(grafo, lapiz);   // dibuja las ramas entre nodos
+           raiz.PosicionNodo(ref x, y); // posicion de todos los nodoS
+           raiz.Ramas(grafo, lapiz);   // dibuja las ramas entre nodos
 
             raiz.Nodo(grafo, fuente, relleno, rellenoFuente, lapiz, encuentro); // dibuja el nodo del arbol
 
+        }
+        
+        
+        public void PArbol(Graphics grafo, Font fuente, Brush relleno, Brush rellenoFuente, Pen lapiz, Brush encuentro, string a)
+        {
+            int x = 400;
+            int y = 75;
+
+            if (raiz == null)
+            {
+                return;
+            }
+
+            raiz.PosicionNodo(ref x, y); // posicion de todos los nodoS
+
+           // cac = raiz.gra;
+
+          raiz.PNodo(grafo, fuente, relleno, rellenoFuente, lapiz, encuentro, a); // dibuja el nodo del arbol
+        //raiz.Nodo(ra, fuente, relleno, rellenoFuente, lapiz, encuentro); // dibuja el nodo del arbol
+
+        }
+
+        public int x1 = 400;
+        public int y2 = 75;
+
+        public void colorear(Graphics grafo, Font fuente, Brush Relleno, Brush RellenoFuente, Pen Lapiz, nodoArbol raiz, bool inOrden)
+        {
+            Brush entorno = Brushes.Red;
+            if(inOrden == true)
+            {
+                if(raiz != null)
+                {
+                    colorear(grafo, fuente, Relleno, RellenoFuente, Lapiz, raiz.Izq, inOrden);
+                    raiz.colorear(grafo, fuente, entorno, RellenoFuente, Lapiz);
+                    Thread.Sleep(1000);
+                    raiz.colorear(grafo, fuente, entorno, RellenoFuente, Lapiz);
+                    colorear(grafo, fuente, Relleno, RellenoFuente, Lapiz, raiz.Der, inOrden);
+                }
+            }
         }
 
 

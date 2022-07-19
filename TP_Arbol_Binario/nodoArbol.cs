@@ -108,7 +108,7 @@ namespace TP_Arbol_Binario
         public void Nodo(Graphics grafo, Font fuente, Brush Relleno, Brush RellenoFuente, Pen lapiz, Brush encuentro)
         {
             Rectangle rect = new Rectangle((int)(CoordenadaX - Radio / 2), (int)(CoordenadaY - Radio / 2), Radio, Radio);
-
+            // MessageBox.Show("ll" + encuentro);
             grafo.FillEllipse(encuentro, rect);
             grafo.FillEllipse(Relleno, rect);
             grafo.DrawEllipse(lapiz, rect); //se dibujar el nodo
@@ -131,5 +131,52 @@ namespace TP_Arbol_Binario
             }
         }
 
+        public void PNodo(Graphics grafo, Font fuente, Brush Relleno, Brush RellenoFuente, Pen lapiz, Brush encuentro, string a)
+        {
+
+            Rectangle rect = new Rectangle((int)(CoordenadaX - Radio / 2), (int)(CoordenadaY - Radio / 2), Radio, Radio);
+            MessageBox.Show("lk" + encuentro);
+            if (a == info.ToString())
+            {
+
+                //grafo.FillEllipse(encuentro, rect);
+                //MessageBox.Show("lk" + grafo.);
+                //grafo.FillEllipse(Relleno, rect);
+                // grafo.DrawEllipse(lapiz, rect); //se dibujar el nodo
+
+                StringFormat forma = new StringFormat(); // se prepara para mostrar los datos 
+
+                forma.Alignment = StringAlignment.Center;
+                forma.LineAlignment = StringAlignment.Center;
+                grafo.DrawString(info.ToString(), fuente, RellenoFuente, CoordenadaX, CoordenadaY, forma); // se muestra dentro del noto el dato que contendria ese nodo
+                                                                                                           // grafo.DrawString(info.ToString(), CoordenadaX, CoordenadaY, forma);
+            }
+            if (Izq != null)// se verifica si tiene hijos izquierdo
+            {
+                Izq.PNodo(grafo, fuente, Relleno, RellenoFuente, lapiz, encuentro, a);
+            }
+
+            if (Der != null) // se verifica si tiene hijos derecho
+            {
+                Der.PNodo(grafo, fuente, Relleno, RellenoFuente, lapiz, encuentro, a);
+            }
+        }
+
+
+        public void colorear(Graphics grafo, Font fuente, Brush Relleno, Brush RellenoFuente, Pen lapiz)
+        {
+            Rectangle rect = new Rectangle((int)(CoordenadaX - Radio / 2), (int)(CoordenadaY - Radio / 2), Radio, Radio);
+
+            //prueba = new Rectangle((int)(CoordenadaX - Radio / 2), (int)(CoordenadaY - Radio / 2), Radio, Radio);
+
+            grafo.FillEllipse(Relleno, rect);
+            grafo.DrawEllipse(lapiz, rect);
+
+            StringFormat forma = new StringFormat(); // se prepara para mostrar los datos 
+
+            forma.Alignment = StringAlignment.Center;
+            forma.LineAlignment = StringAlignment.Center;
+            grafo.DrawString(info.ToString(), fuente, RellenoFuente, CoordenadaX, CoordenadaY, forma);
+        }
     }
 }
