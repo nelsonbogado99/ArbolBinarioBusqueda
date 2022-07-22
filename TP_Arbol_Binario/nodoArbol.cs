@@ -167,8 +167,7 @@ namespace TP_Arbol_Binario
         {
             Rectangle rect = new Rectangle((int)(CoordenadaX - Radio / 2), (int)(CoordenadaY - Radio / 2), Radio, Radio);
 
-            //prueba = new Rectangle((int)(CoordenadaX - Radio / 2), (int)(CoordenadaY - Radio / 2), Radio, Radio);
-
+            
             grafo.FillEllipse(Relleno, rect);
             grafo.DrawEllipse(lapiz, rect);
 

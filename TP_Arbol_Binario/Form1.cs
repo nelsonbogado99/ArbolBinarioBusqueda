@@ -20,6 +20,8 @@ namespace TP_Arbol_Binario
             btnMultiplo3.Visible = false;
             btnMultiplo5.Visible = false;
             panel3.Visible = false;
+            panel4.Visible = false;
+            panel5.Visible = false;
             a();
         }
 
@@ -28,24 +30,27 @@ namespace TP_Arbol_Binario
         public Graphics c;
         public Graphics[] af = new Graphics[10];
         bool aaa= false;
+        bool preorden = false;
+        bool inorden = false;
+        bool posorden = false;
         int ccc = 0;
         Arbol_ABB Arbol = new Arbol_ABB();
 
         private void btnAltura_Click(object sender, EventArgs e)
         {
-            SoundPlayer sonido = new SoundPlayer(@"C:\Users\Nelson\Desktop\Materias 2022\LP2\TP_Arbol_Binario\TP_Arbol_Binario\bin\Debug\net5.0-windows\sonido\haga-clic-en_4.wav");
-            sonido.Play();
+           // SoundPlayer sonido = new SoundPlayer(@"C:\Users\Nelson\Desktop\Materias 2022\LP2\TP_Arbol_Binario\TP_Arbol_Binario\bin\Debug\net5.0-windows\sonido\haga-clic-en_4.wav");
+           // sonido.Play();
             Arbol.ImprimirAltura();
             panel3.Visible = false;
         }
 
         private void btnRecorrido_Click(object sender, EventArgs e)
         {
-            SoundPlayer sonido = new SoundPlayer(@"C:\Users\Nelson\Desktop\Materias 2022\LP2\TP_Arbol_Binario\TP_Arbol_Binario\bin\Debug\net5.0-windows\sonido\haga-clic-en_4.wav");
-            sonido.Play();
+            
             if (Arbol.raiz != null)
             {
                 panel3.Visible = true;
+                
                 txtPosOrden.Clear();
                // txtPosOrden.Focus();
                 txtPreOrden.Clear();
@@ -55,17 +60,15 @@ namespace TP_Arbol_Binario
 
                 Arbol.inorden = "";
                 Arbol.posorden = "";
-                Arbol.preorden = "";
+                Arbol.Preorden = "";
 
                 Refresh();
-               // Refresh();
-               // Arbol.Recorrido();
+      
                 txtPosOrden.Text = Arbol.posorden;
                 txtInOrden.Text = Arbol.inorden;
-                txtPreOrden.Text = Arbol.preorden;
-                aaa = true;
+                txtPreOrden.Text = Arbol.Preorden;
+              
                 MessageBox.Show("nelson"+c);
-                //  Arbol.PArbol(c, this.Font, Brushes.Black, Brushes.White, Pens.Black, Brushes.White);
             }
             else
             {
@@ -75,8 +78,8 @@ namespace TP_Arbol_Binario
 
         private void btnMenor_Click(object sender, EventArgs e)
         {
-            SoundPlayer sonido = new SoundPlayer(@"C:\Users\Nelson\Desktop\Materias 2022\LP2\TP_Arbol_Binario\TP_Arbol_Binario\bin\Debug\net5.0-windows\sonido\haga-clic-en_4.wav");
-            sonido.Play();
+           // SoundPlayer sonido = new SoundPlayer(@"C:\Users\Nelson\Desktop\Materias 2022\LP2\TP_Arbol_Binario\TP_Arbol_Binario\bin\Debug\net5.0-windows\sonido\haga-clic-en_4.wav");
+            //sonido.Play();
             Arbol.Menor();
             panel3.Visible = false;
         }
@@ -148,10 +151,7 @@ namespace TP_Arbol_Binario
 
                 Arbol.AlturaArbol(Dato);
                 txtInfo.Clear();
-                //txtInfo.Focus();
-
-
-               // Refresh();
+       
                 Refresh();
                 
             }
@@ -186,8 +186,7 @@ namespace TP_Arbol_Binario
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             panel3.Visible = false;
-            SoundPlayer sonido = new SoundPlayer(@"C:\Users\Nelson\Desktop\Materias 2022\LP2\TP_Arbol_Binario\TP_Arbol_Binario\bin\Debug\net5.0-windows\sonido\haga-clic-en_4.wav");
-            sonido.Play();
+           
             if (txtInfo.Text == "")
             {
                 MessageBox.Show("Debe Ingresar un Valor");
@@ -198,79 +197,79 @@ namespace TP_Arbol_Binario
                 Arbol.BuscarNodo(Dato);
 
                 txtInfo.Clear();
-               // txtInfo.Focus();
-
-
+            
                 Refresh();
-               // Refresh();
+               
                
             }
         }
 
         private void btnAyuda_Click(object sender, EventArgs e)
         {
-            SoundPlayer sonido = new SoundPlayer(@"C:\Users\Nelson\Desktop\Materias 2022\LP2\TP_Arbol_Binario\TP_Arbol_Binario\bin\Debug\net5.0-windows\sonido\haga-clic-en_4.wav");
-            sonido.Play();
+            
             Ayuda Ay = new Ayuda();
             Ay.Show();
 
 
         }
 
-        //Font ca;
+        
 
-        private void Form1_Click(object sender, PaintEventArgs e)
-        {
-            c = e.Graphics;
-            af[ccc] = e.Graphics;
-           /// ca = this.Font;
-          // MessageBox.Show("ho" + c.ToString());
-            Arbol.Arbol(c, this.Font, Brushes.CadetBlue, Brushes.White, Pens.Black, Brushes.White);
+        
 
-            if (aaa == true)
-            {
-                MessageBox.Show("Nelsona");
-                //Arbol.Arbol(c, this.Font, Brushes.Black, Brushes.White, Pens.Black, Brushes.White);
-                Arbol.colorear(c,this.Font, Brushes.Black, Brushes.White, Pens.Black, Arbol.raiz, aaa);
-
-            }
-        }
-
-        /*  private void Form1_Load(object sender, EventArgs e)
-          {
-              c = e.Graphics;
-               MessageBox.Show("hola" + c.ToString());
-          }*/
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("nelson");
-        }
+        
+   
 
         public void Form1_Load(object sender, PaintEventArgs e)
         {
             c = e.Graphics;
-            af[ccc] = c;
-            ccc++;
-          //  MessageBox.Show("hola" +c);
-            Arbol.Arbol(c, this.Font, Brushes.CadetBlue, Brushes.White, Pens.Black, Brushes.White);
-            if (aaa == true)
-            {
-                MessageBox.Show("Nelsona");
-                //Arbol.Arbol(c, this.Font, Brushes.Black, Brushes.White, Pens.Black, Brushes.White);
-                Arbol.colorear(c, this.Font, Brushes.Black, Brushes.White, Pens.Black, Arbol.raiz, aaa);
 
+            
+            Arbol.Arbol(c, this.Font, Brushes.CadetBlue, Brushes.White, Pens.Black, Brushes.White);
+          
+
+            if (preorden == true)
+            {
+                Arbol.colorear(c, this.Font, Brushes.OliveDrab, Brushes.White, Pens.Black, Arbol.raiz, inorden, posorden, preorden);
+                
+                panel3.Visible = true;
+               // txtPreOrden.Clear();
+                Arbol.Preorden = "";
+
+               /* Refresh();*/
+
+                
+                txtPreOrden.Text = Arbol.Preorden;
+                preorden = false;
+                posorden = false;
+                inorden = false;
+            }
+            else if (inorden ==  true)
+            {
+                Arbol.colorear(c, this.Font, Brushes.OliveDrab, Brushes.White, Pens.Black, Arbol.raiz, inorden, posorden, preorden);
+                Arbol.Recorrido2();
+                preorden = false;
+                posorden = false;
+                inorden = false;
+            }
+            else if (posorden == true)
+            {
+                Arbol.colorear(c, this.Font, Brushes.OliveDrab, Brushes.White, Pens.Black, Arbol.raiz, inorden, posorden, preorden);
+                Arbol.Recorrido2();
+                preorden = false;
+                posorden = false;
+                inorden = false;
             }
 
 
         }
 
 
-        PaintEventArgs ac;
+       // PaintEventArgs ac;
         private void a()
         {
             PaintEventArgs ac;
-          //  c = ac.Graphics;
-            MessageBox.Show("hol" + c);
+          
         }
 
         
@@ -287,9 +286,53 @@ namespace TP_Arbol_Binario
 
         private void Form1_Click(object sender, EventArgs e)
         {
-          //  MessageBox.Show("hola" + e);
-            //Form1_Load(sender, e);
-            // Arbol.PArbol(, this.Font, Brushes.CadetBlue, Brushes.White, Pens.Black, Brushes.White);
+          
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Arbol.Recorrido2();
+            preorden = true;
+            posorden = false;
+            inorden = false;
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Arbol.Recorrido2();
+            preorden = false;
+            posorden = true;
+            inorden = false;
+           
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Arbol.Recorrido2();
+            preorden = false;
+            posorden = false;
+            inorden = true; 
+        }
+
+
+        bool ac = false;
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ac = false;
+            Arbol.Recorrido(ac);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ac = true;
+            Arbol.Recorrido(ac);
+        }
+
+        private void txtInOrden_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

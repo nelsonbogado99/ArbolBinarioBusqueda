@@ -42,6 +42,10 @@ namespace TP_Arbol_Binario
             this.btnMenor = new System.Windows.Forms.Button();
             this.btnSuma = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.BtnBuscar = new System.Windows.Forms.Button();
@@ -49,7 +53,6 @@ namespace TP_Arbol_Binario
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtPosOrden = new System.Windows.Forms.TextBox();
-            this.txtInOrden = new System.Windows.Forms.TextBox();
             this.txtPreOrden = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,11 +60,16 @@ namespace TP_Arbol_Binario
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtInOrden = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -198,6 +206,10 @@ namespace TP_Arbol_Binario
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.CadetBlue;
+            this.panel2.Controls.Add(this.button5);
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.BtnInsertar);
             this.panel2.Controls.Add(this.BtnBuscar);
@@ -208,15 +220,55 @@ namespace TP_Arbol_Binario
             this.panel2.Size = new System.Drawing.Size(763, 94);
             this.panel2.TabIndex = 118;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(491, 51);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(152, 23);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "Cantidad de nodos hojas";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(505, 12);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(128, 23);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Cantidad de Nodos";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(658, 65);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "In Orden";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(658, 33);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Pos Orden";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(634, 32);
+            this.button1.Location = new System.Drawing.Point(658, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
+            this.button1.Text = "Pre Orden";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // BtnInsertar
             // 
@@ -234,7 +286,7 @@ namespace TP_Arbol_Binario
             // BtnBuscar
             // 
             this.BtnBuscar.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnBuscar.Location = new System.Drawing.Point(451, 63);
+            this.BtnBuscar.Location = new System.Drawing.Point(391, 63);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(75, 23);
             this.BtnBuscar.TabIndex = 4;
@@ -245,7 +297,7 @@ namespace TP_Arbol_Binario
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnEliminar.Location = new System.Drawing.Point(290, 63);
+            this.btnEliminar.Location = new System.Drawing.Point(249, 63);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 6;
@@ -262,32 +314,20 @@ namespace TP_Arbol_Binario
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txtPosOrden);
-            this.panel3.Controls.Add(this.txtInOrden);
             this.panel3.Controls.Add(this.txtPreOrden);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(198, 315);
+            this.panel3.Location = new System.Drawing.Point(185, 286);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(497, 90);
+            this.panel3.Size = new System.Drawing.Size(497, 35);
             this.panel3.TabIndex = 120;
             // 
             // txtPosOrden
             // 
             this.txtPosOrden.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPosOrden.Location = new System.Drawing.Point(129, 67);
+            this.txtPosOrden.Location = new System.Drawing.Point(96, 16);
             this.txtPosOrden.Name = "txtPosOrden";
             this.txtPosOrden.Size = new System.Drawing.Size(179, 16);
             this.txtPosOrden.TabIndex = 5;
-            // 
-            // txtInOrden
-            // 
-            this.txtInOrden.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInOrden.Location = new System.Drawing.Point(129, 38);
-            this.txtInOrden.Name = "txtInOrden";
-            this.txtInOrden.Size = new System.Drawing.Size(179, 16);
-            this.txtInOrden.TabIndex = 4;
             // 
             // txtPreOrden
             // 
@@ -301,7 +341,7 @@ namespace TP_Arbol_Binario
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(55, 65);
+            this.label4.Location = new System.Drawing.Point(16, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 18);
             this.label4.TabIndex = 2;
@@ -311,7 +351,7 @@ namespace TP_Arbol_Binario
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(64, 36);
+            this.label3.Location = new System.Drawing.Point(41, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 18);
             this.label3.TabIndex = 1;
@@ -360,12 +400,40 @@ namespace TP_Arbol_Binario
             this.pictureBox2.TabIndex = 123;
             this.pictureBox2.TabStop = false;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.txtInOrden);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Location = new System.Drawing.Point(185, 327);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(497, 35);
+            this.panel4.TabIndex = 124;
+            // 
+            // txtInOrden
+            // 
+            this.txtInOrden.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtInOrden.Location = new System.Drawing.Point(129, 10);
+            this.txtInOrden.Name = "txtInOrden";
+            this.txtInOrden.Size = new System.Drawing.Size(179, 16);
+            this.txtInOrden.TabIndex = 3;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Controls.Add(this.txtPosOrden);
+            this.panel5.Location = new System.Drawing.Point(185, 370);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(497, 35);
+            this.panel5.TabIndex = 125;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(931, 489);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -387,6 +455,10 @@ namespace TP_Arbol_Binario
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,7 +484,6 @@ namespace TP_Arbol_Binario
         public System.Windows.Forms.TextBox txtInfo;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtPosOrden;
-        private System.Windows.Forms.TextBox txtInOrden;
         private System.Windows.Forms.TextBox txtPreOrden;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -420,7 +491,14 @@ namespace TP_Arbol_Binario
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox txtInOrden;
+        private System.Windows.Forms.Panel panel5;
     }
 }
 

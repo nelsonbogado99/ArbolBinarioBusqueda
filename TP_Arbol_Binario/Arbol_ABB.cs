@@ -21,18 +21,18 @@ namespace TP_Arbol_Binario
 
         }
         // c = e.Graphics;
-         Graphics cac;
+        // Graphics cac;
         public string inorden = ""; // variale de tipo string para guardar en ella el recorrido el arbol en in orden
         public string posorden = ""; // variale de tipo string para guardar en ella el recorrido el arbol en pos orden
-        public string preorden = ""; // variale de tipo string para guardar en ella el recorrido el arbol en pre orden
+        public string Preorden = ""; // variale de tipo string para guardar en ella el recorrido el arbol en pre orden
 
         public int auxiliar = 1, contador = 0, ay = 0; // variables auxiliares que se usa para recorrer los diferentes arreglos
         int[] Altura = new int[800]; // este arreglo se usara para guardar en ella las alturas del arbol
         int[] Infor = new int[200]; // este arreglo se usa para guardar en ella los diferentes datos ingresados para el nodo
         int[] MayorMenor = new int[200]; // en este se guarda los valores de los nodos para saber que nodo es menor o mayor
-
+        int cantidadNodo = 0;
         int suma = 0, con = 0; // se uti;iza paara sumar los diferentes nodos del arbol
-
+        bool aux = false;
         // Cuando se de clic al boton de Menor nodo se llama a este metodo 
         public void Menor()
         {
@@ -223,18 +223,34 @@ namespace TP_Arbol_Binario
 
 
         // llamado por el boton Recorridos
-        public void Recorrido(Graphics grafo)
+        public void Recorrido(bool a)
         {
             Form1 ac = new Form1();
             if (raiz != null)
             {
 
-                colorear(grafo, ac.Font, Brushes.CadetBlue, Brushes.White, Pens.Black, raiz, true);
+                // colorear(grafo, ac.Font, Brushes.CadetBlue, Brushes.White, Pens.Black, raiz, inorden, posorden, preornden);
 
                 // RecorridoPreOrden(raiz,grafo);// llama a los diferentes metodos de recorrido
-                //  RecorridoIndOrden(raiz);
-                // RecorridoPosOrden(raiz);
-                //  MessageBox.Show("reco" + this.Font);
+                if (a == false)
+                {
+                    RecorridoIndOrden(raiz);
+                }
+                else
+                {
+                    RecorridoPosOrden(raiz);
+                }
+
+
+                if (aux == true)
+                {
+                    MessageBox.Show("La cantidad de nodos es: " + cantidadNodo);
+                }
+                else
+                {
+                    MessageBox.Show("La cantidad de nodos hojas es: " + cantidadNodo);
+                }
+                cantidadNodo = 0;
             }
             else // en caso de que el arbol este vacio
             {
@@ -242,6 +258,16 @@ namespace TP_Arbol_Binario
             }
         }
         
+        public void Recorrido2()
+        {
+            if(raiz !=  null)
+            {
+                RecorridoPreOrden(raiz);
+                RecorridoIndOrden(raiz);
+                RecorridoPosOrden(raiz);
+            }
+            cantidadNodo = 0;
+        }
 
         // Metpdo que recive la informacion a ser buscada en el arbol
         public void BuscarNodo(int info)
@@ -608,18 +634,15 @@ namespace TP_Arbol_Binario
 
         //Metodo de recorrido en pre orden
        // public string a;
-        public void RecorridoPreOrden(nodoArbol raiz, Graphics grafo)
+        public void RecorridoPreOrden(nodoArbol raiz)
         {
            
             if (raiz != null)
             {
-                Form1 ac = new Form1();
-                preorden += raiz.Info.ToString() + ", ";
-                PArbol(grafo,ac.Font, Brushes.Black, Brushes.White, Pens.Black, Brushes.White, raiz.Info.ToString());
-              
-                Thread.Sleep(600);
-              //  RecorridoPreOrden(raiz.Izq);
-               // RecorridoPreOrden(raiz.Der);
+
+               Preorden += raiz.Info.ToString() + ", ";
+               RecorridoPreOrden(raiz.Izq);
+               RecorridoPreOrden(raiz.Der);
 
             }
         }
@@ -632,13 +655,19 @@ namespace TP_Arbol_Binario
             {
 
                 RecorridoPosOrden(raiz.Izq);
+                if( raiz.Der == null && raiz.Izq == null)
+                {
+                    cantidadNodo++;
+                }
                 RecorridoPosOrden(raiz.Der);
+                
                 posorden += raiz.Info.ToString() + ", ";
 
             }
         }
 
         //Metodo de recorrido en ind orden
+       
         public void RecorridoIndOrden(nodoArbol raiz)
         {
             if (raiz != null)
@@ -647,9 +676,9 @@ namespace TP_Arbol_Binario
                 RecorridoIndOrden(raiz.Izq);
 
                 inorden += raiz.Info.ToString() + ", ";
-
+                cantidadNodo++;
                 RecorridoIndOrden(raiz.Der);
-
+                aux = true;
             }
         }
 
@@ -694,18 +723,43 @@ namespace TP_Arbol_Binario
         public int x1 = 400;
         public int y2 = 75;
 
-        public void colorear(Graphics grafo, Font fuente, Brush Relleno, Brush RellenoFuente, Pen Lapiz, nodoArbol raiz, bool inOrden)
+        public void colorear(Graphics grafo, Font fuente, Brush Relleno, Brush RellenoFuente, Pen Lapiz, nodoArbol raiz, bool inOrden, bool posOrden, bool preOrden)
         {
-            Brush entorno = Brushes.Red;
+            Brush entorno = Brushes.OliveDrab;
             if(inOrden == true)
             {
                 if(raiz != null)
                 {
-                    colorear(grafo, fuente, Relleno, RellenoFuente, Lapiz, raiz.Izq, inOrden);
+                    colorear(grafo, fuente, Relleno, RellenoFuente, Lapiz, raiz.Izq, inOrden, posOrden, preOrden);
                     raiz.colorear(grafo, fuente, entorno, RellenoFuente, Lapiz);
                     Thread.Sleep(1000);
                     raiz.colorear(grafo, fuente, entorno, RellenoFuente, Lapiz);
-                    colorear(grafo, fuente, Relleno, RellenoFuente, Lapiz, raiz.Der, inOrden);
+                    colorear(grafo, fuente, Relleno, RellenoFuente, Lapiz, raiz.Der, inOrden, posOrden, preOrden);
+                }
+            }
+
+            else if (preOrden ==  true)
+            {
+                if (raiz != null)
+                {
+                    raiz.colorear(grafo, fuente, entorno, RellenoFuente, Lapiz);
+                    Thread.Sleep(1000);
+                    raiz.colorear(grafo, fuente, entorno, RellenoFuente, Lapiz);
+                    colorear(grafo, fuente, Relleno, RellenoFuente, Lapiz, raiz.Izq, inOrden, posOrden, preOrden);
+                    colorear(grafo, fuente, Relleno, RellenoFuente, Lapiz, raiz.Der, inOrden, posOrden, preOrden);
+                }
+            }
+            else if (posOrden == true)
+            {
+
+                if (raiz != null)
+                {
+                   
+                    colorear(grafo, fuente, Relleno, RellenoFuente, Lapiz, raiz.Izq, inOrden, posOrden, preOrden);
+                    colorear(grafo, fuente, Relleno, RellenoFuente, Lapiz, raiz.Der, inOrden, posOrden, preOrden);
+                    raiz.colorear(grafo, fuente, entorno, RellenoFuente, Lapiz);
+                    Thread.Sleep(1000);
+                    raiz.colorear(grafo, fuente, entorno, RellenoFuente, Lapiz);
                 }
             }
         }
